@@ -1,0 +1,16 @@
+{
+  "name": "account-linking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Tomás Migone <tomas@p4d.com.ar> (http://www.programming4design.com.ar)",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-session": "^2.0.0-beta.3",
+    "express": "^4.16.3"
+  }
+}
