@@ -1,16 +1,32 @@
 {
-  "name": "account-linking",
+  "name": "alexa-adapter-bgh-smart-control",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Alexa OAuth 2.0 adapter for BGH Smart Control service",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "nodemon",
+    "deploy": "now --public && now alias"
   },
   "keywords": [],
-  "author": "Tomás Migone <tomas@p4d.com.ar> (http://www.programming4design.com.ar)",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomasmigone/alexa-adapter-bgh-smart-control.git"
+  },
+  "author": "Tomás Migone <tomasmigone@gmail.com> (http://www.p4d.com.ar)",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/tomasmigone/alexa-adapter-bgh-smart-control/issues"
+  },
+  "homepage": "https://github.com/tomasmigone/alexa-adapter-bgh-smart-control#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "cookie-session": "^2.0.0-beta.3",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "pug": "^2.0.3",
+    "request": "^2.85.0"
+  },
+  "devDependencies": {
+    "standard": "^11.0.1"
   }
 }
