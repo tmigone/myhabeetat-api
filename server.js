@@ -1,7 +1,7 @@
 const express = require('express')
 const session = require('cookie-session')
 const bodyParser = require('body-parser')
-const bgh = require('./lib/bgh')
+const BGH = require('bgh-smart-control')
 
 const app = express()
 app.set('view engine', 'pug')
@@ -29,25 +29,21 @@ app.get('/oauth/request_token', (req, res) => {
   }
 })
 
-app.get('/oauth/request_token/callback', (req, res) => {
-  let device = new bgh.Device()
-  device.login(req.query.uname, req.query.psw).then(() => {
-    if (req.query.redirectURL && req.query.state && device.token) {
-      let redirectURL = decodeURI(req.query.redirectURL) + '?state=' + req.query.state + '&code=' + device.token
-      res.redirect(redirectURL)
-    } else {
-      res.status(500).send('Error: Could not get redirectURL, state or token.')
-    }
-  }).catch((error) => {
-    res.status(500).send(error)
-  })
+app.get('/oauth/request_token/callback', async (req, res) => {
+  let bgh = new BGH()
+  let token = await bgh.login(req.query.uname, req.query.psw)
+  if (req.query.redirectURL && req.query.state && token) {
+    res.redirect(decodeURI(req.query.redirectURL) + '?state=' + req.query.state + '&code=' + token)
+  } else {
+    res.status(500).send('Error: Could not get redirectURL, state or token.')
+  }
 })
 
 // OAuth 2.0 - Access token endpoint
 app.post('/oauth/access_token', (req, res) => {
   if (req.body.code) {
     res.json({
-      access_token: 'SplxlOBeZQQYbYS6WxSbIR'
+      access_token: req.body.code
     })
   }
 })
