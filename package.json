@@ -11,19 +11,19 @@
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tomasmigone/alexa-adapter-bgh-smart-control.git"
+    "url": "git+https://github.com/tmigone/alexa-adapter-bgh-smart-control.git"
   },
-  "author": "Tomás Migone <tomasmigone@gmail.com> (http://www.p4d.com.ar)",
+  "author": "Tomás Migone <tomasmigone@gmail.com>",
   "license": "WTFPL",
   "bugs": {
-    "url": "https://github.com/tomasmigone/alexa-adapter-bgh-smart-control/issues"
+    "url": "https://github.com/tmigone/alexa-adapter-bgh-smart-control/issues"
   },
-  "homepage": "https://github.com/tomasmigone/alexa-adapter-bgh-smart-control#readme",
+  "homepage": "https://github.com/tmigone/alexa-adapter-bgh-smart-control#readme",
   "dependencies": {
-    "bgh-smart-control": "github:tomasmigone/bgh-smart-control",
     "body-parser": "^1.18.2",
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.3",
+    "myhabeetat": "^1.4.0",
     "pug": "^2.0.3"
   },
   "devDependencies": {
