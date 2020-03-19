@@ -15,8 +15,8 @@ app.get('/', (req, res) => {
   res.json({ message: 'ok' })
 })
 
-// OAuth 2.0 - Request token endpoints - Authorization URI
-app.get('/oauth/request_token', (req, res) => {
+// OAuth 2.0 - Authorization URI
+app.get('/oauth/authorize', (req, res) => {
   let data = {
     state: req.query.state,
     redirectURL: req.query.redirect_uri
@@ -28,7 +28,7 @@ app.get('/oauth/request_token', (req, res) => {
   }
 })
 
-app.get('/oauth/request_token/callback', async (req, res) => {
+app.get('/oauth/authorize/callback', async (req, res) => {
   try {
     let token = await MyHabeetat.login(req.query.uname, req.query.psw)
     if (req.query.redirectURL && req.query.state && token) {
@@ -41,7 +41,7 @@ app.get('/oauth/request_token/callback', async (req, res) => {
   }
 })
 
-// OAuth 2.0 - Access token endpoint - Access token URI
+// OAuth 2.0 - Access token URI
 app.post('/oauth/access_token', (req, res) => {
   if (req.body.code) {
     res.json({
