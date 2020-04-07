@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }))
 
 // Test endpoint
 app.get('/', (req, res) => {
-  res.json({ status: 'ok!' })
+  res.json({ status: 'ok' })
 })
 
 // OAuth 2.0 - Authorization URI

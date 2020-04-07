@@ -13,7 +13,7 @@
   ],
   "routes": [
     {
-      "src": "/oauth/(.*)",
+      "src": "/(.*)",
       "dest": "/server.js"
     }
   ]
