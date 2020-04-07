@@ -1,4 +1,20 @@
 {
-  "name": "alexa-adapter-bgh-smart-control",
-  "alias": "alexa-bgh-login"
+  "version": 2,
+  "scope": "tmigone",
+  "public": true,
+  "alias": [
+    "myhabeetat-oauth.tmigone.com"
+  ],
+  "builds": [
+    {
+      "src": "*.js",
+      "use": "@now/node-server"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/oauth/(.*)",
+      "dest": "/server.js"
+    }
+  ]
 }

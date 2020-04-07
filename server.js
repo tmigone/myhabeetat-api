@@ -1,56 +1,62 @@
+const packageJSON = require('./package.json')
 const express = require('express')
-const session = require('cookie-session')
 const MyHabeetat = require('myhabeetat')
 
 const app = express()
 app.set('view engine', 'pug')
 app.set('trust proxy', 1)
-app.set('port', 5000)
-app.use(session({ secret: 'batata', cookie: { maxAge: 2592000 } }))
+app.set('port', 80)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // Test endpoint
 app.get('/', (req, res) => {
-  res.json({ message: 'ok' })
+  res.json({ status: 'ok!' })
 })
 
 // OAuth 2.0 - Authorization URI
 app.get('/oauth/authorize', (req, res) => {
-  let data = {
-    state: req.query.state,
-    redirectURL: req.query.redirect_uri
-  }
-  if (data.state && data.redirectURL) {
+  const { state, redirect_uri: redirectURL } = req.query
+  if (state && redirectURL) {
     res.render('login', data)
   } else {
-    res.status(500).send('Error: Did not receive state or redirect_uri.')
-  }
-})
-
-app.get('/oauth/authorize/callback', async (req, res) => {
-  try {
-    let token = await MyHabeetat.login(req.query.uname, req.query.psw)
-    if (req.query.redirectURL && req.query.state && token) {
-      res.redirect(decodeURI(req.query.redirectURL) + '?state=' + req.query.state + '&code=' + token)
-    } else {
-      res.status(500).send('Error: Could not get redirectURL, state or token.')
-    }
-  } catch (error) {
-    res.status(500).send(`Error: ${error}`)
-  }
-})
-
-// OAuth 2.0 - Access token URI
-app.post('/oauth/access_token', (req, res) => {
-  if (req.body.code) {
-    res.json({
-      access_token: req.body.code
+    res.status(500).json({
+      status: 'error',
+      message: 'Missing required querystring parameters: state, redirect_uri'
     })
   }
 })
 
+app.get('/oauth/authorize/callback', async (req, res) => {
+  const { uname, psw, redirect_uri: redirectURL, state } = req.query
+  try {
+    let token = await MyHabeetat.login(uname, psw)
+    if (redirectURL && state && token) {
+      res.redirect(`${decodeURI(redirectURL)}?state=${state}&code=${token}`)
+    } else {
+      res.status(500).json({
+        status: 'error',
+        message: 'Error: Could not get redirectURL, state or token.'
+      })
+    }
+  } catch (error) {
+    res.status(500).json({
+      status: 'error',
+      source: 'MyHabeetat',
+      message: error.message
+    })
+  }
+})
+
+// OAuth 2.0 - Access token URI
+// TODO: Don't do it the hacky way...
+app.post('/oauth/access_token', (req, res) => {
+  res.json({
+    access_token: req.body.code
+  })
+})
+
 // Start server
 app.listen(app.get('port'), () => {
-  console.log('Listening on port %s', app.get('port'))
+  console.log(`${packageJSON.name} listening on port ${app.get('port')}`)
 })

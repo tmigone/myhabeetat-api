@@ -1,27 +1,26 @@
 {
-  "name": "alexa-adapter-bgh-smart-control",
-  "version": "1.0.0",
-  "description": "Alexa OAuth 2.0 adapter for BGH Smart Control service",
+  "name": "myhabeetat-oauth",
+  "version": "2.0.0",
+  "description": "OAuth 2.0 adapter for MyHabeetat and BGH Smart Control services",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon",
-    "deploy": "now --public && now alias"
+    "deploy": "now",
+    "deploy:prod": "now --prod"
   },
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tmigone/alexa-adapter-bgh-smart-control.git"
+    "url": "git+https://github.com/tmigone/myhabeetat-oauth.git"
   },
   "author": "Tomás Migone <tomasmigone@gmail.com>",
-  "license": "WTFPL",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tmigone/alexa-adapter-bgh-smart-control/issues"
+    "url": "https://github.com/tmigone/myhabeetat-oauth/issues"
   },
-  "homepage": "https://github.com/tmigone/alexa-adapter-bgh-smart-control#readme",
+  "homepage": "https://github.com/tmigone/myhabeetat-oauth#readme",
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.3",
     "myhabeetat": "^1.4.0",
     "pug": "^2.0.3"
