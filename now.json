@@ -3,7 +3,7 @@
   "scope": "tmigone",
   "public": true,
   "alias": [
-    "myhabeetat-oauth.tmigone.com"
+    "myhabeetat.tmigone.com"
   ],
   "builds": [
     {
