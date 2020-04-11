@@ -1,5 +1,5 @@
 {
-  "name": "myhabeetat-oauth",
+  "name": "myhabeetat-api",
   "version": "2.0.0",
   "description": "OAuth 2.0 adapter for MyHabeetat and BGH Smart Control services",
   "main": "server.js",
@@ -12,21 +12,25 @@
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tmigone/myhabeetat-oauth.git"
+    "url": "git+https://github.com/tmigone/myhabeetat-api.git"
   },
   "author": "Tomás Migone <tomasmigone@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tmigone/myhabeetat-oauth/issues"
+    "url": "https://github.com/tmigone/myhabeetat-api/issues"
   },
-  "homepage": "https://github.com/tmigone/myhabeetat-oauth#readme",
+  "homepage": "https://github.com/tmigone/myhabeetat-api#readme",
   "dependencies": {
     "express": "^4.16.3",
+    "express-async-handler": "^1.1.4",
     "myhabeetat": "^1.4.0",
     "pug": "^2.0.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.2",
     "standard": "^11.0.1"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }
