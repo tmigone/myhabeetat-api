@@ -1,9 +1,10 @@
 # myhabeetat-api
 
 Web API for [MyHabeetat's cloud platform](https://myhabeetat.solidmation.com/) (including BGH Smart Control devices).
+
 Live URL: https://myhabeetat.tmigone.com
 
-Features:
+**Features**
 - Endpoints that adapt MyHabeetat's cloud authentication to an OAuth 2.0 compliant login. This was created to do [Account Linking](https://developer.amazon.com/en-US/docs/alexa/account-linking/configure-authorization-code-grant.html) with [this](https://github.com/tmigone/alexa-skill-my-habeetat) Alexa custom Skill, but could also work with any service that requires OAuth authentication.
 - Web API version of [myhabeetat](https://github.com/tmigone/myhabeetat/) library. This allows you to control your devices using HTTP requests.
 
@@ -13,12 +14,12 @@ Note: You don't need to deploy or configure this project if you want to control 
 
 Project's base URL: https://myhabeetat.tmigone.com
 
-### Healthcheck
+### Healthcheck
 | Endpoint | URL | Parameters | Description |
 | --------- | --------- | --------- | --------- |
 | GET `/health` | https://myhabeetat.tmigone.com/health | none | Check if the API is up. |
 
-### OAuth 2.0
+### OAuth 2.0
 
 For an overview of Alexa authorization code grant flow, visit this site: [Account Linking](https://developer.amazon.com/en-US/docs/alexa/account-linking/configure-authorization-code-grant.html)
 
