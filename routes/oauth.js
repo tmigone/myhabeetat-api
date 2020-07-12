@@ -18,7 +18,7 @@ router.get('/authorize', (req, res) => {
 
 // Callback
 router.get('/authorize/callback', asyncHandler(async (req, res) => {
-  const { uname, psw, redirect_uri: redirectURL, state } = req.query
+  const { uname, psw, redirectURL, state } = req.query
   let token = await MyHabeetat.login(uname, psw)
   if (redirectURL && state && token) {
     res.redirect(`${decodeURI(redirectURL)}?state=${state}&code=${token}`)
